@@ -20,5 +20,14 @@ function catGenerator(){
     // addImg.setAttribute('id','cat-img');
     var div = document.getElementById('flexBox2');
     addImg.src="https://thecatapi.com/api/images/get?format=src&type=gif&size=small";
-    div.appendChild(addImg);
+    div.appendChild(addImg); 
 }
+
+//3. Challenge 3 Rock paper and Scissors
+
+function rpsgame(yourChoice){
+    var id = yourChoice.id;
+    var text = document.getElementById(id);
+    
+}
+
