@@ -29,7 +29,6 @@ function rpsgame(yourChoice){
     var humanChoice,Botchoice;
     humanChoice=yourChoice.id;
     Botchoice = numberToChoice(choice());
-    alert(Botchoice); 
     var result = results(Botchoice,humanChoice);
     console.log(result);
     var message =finalMessage(result);
@@ -57,19 +56,19 @@ function results(botchoice,humanChoice){
 function finalMessage(result){
     if(result[0]>result[1]){
         return {
-            'messagee':'You won',
+            'message':'You won',
             'color':'green'
         }
     }
     else if(result[0]<result[1]){
         return {
-            'messagee':'You lose',
+            'message':'You lose',
             'color':'red'
         }
     }
     else{
         return {
-            'messagee':'Draw',
+            'message':'Draw',
             'color':'blue'
        }
     }
@@ -81,16 +80,23 @@ function rpsFrontEnd(yourChoice,Botchoice,message){
         'paper':document.getElementById('paper').src,
         'scissor':document.getElementById('scissor').src
     }
+    console.log(imgDB['rock']);
     //removing the frontEnd and adding that to the dom
     document.getElementById('rock').remove();
     document.getElementById('scissor').remove();
     document.getElementById('paper').remove();
-    var image = document.createElement('img');
-    var div= document.getElementById('flexBox3');
-    image.src =imgDB[yourChoice.id];
-    div.appendChild(image);
-    var image2 = document.createElement('img');
-    var div2= document.getElementById('flexBox3');
-    image1.src =imgDB[Botchoice.id];
-    div.appendChild(image2);
+    
+    var humanDiv = document.createElement('div');
+    var botDiv = document.createElement('div');
+    var messageDiv = document.createElement('div');
+
+    humanDiv.innerHTML = "<img class='"+message['color']+"' src='"+imgDB[yourChoice]+"'>"
+    document.getElementById('flexBox3').appendChild(humanDiv);
+    
+    messageDiv.innerHTML= "<h1>"+message['message']+"</h1>"
+    document.getElementById('flexBox3').appendChild(messageDiv);
+
+
+    botDiv.innerHTML = "<img class='"+message['color']+"' src='"+imgDB[Botchoice]+"'>"
+    document.getElementById('flexBox3').appendChild(botDiv);
 }
